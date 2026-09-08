@@ -16,13 +16,8 @@ class Settings:
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
     
     # LLM Cloud: Google Gemini Flash
-    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "AIzaSyD570QZ33pMSfy9wU0qVnNQRZxtSZEEKds")
-    GEMINI_BACKUP_KEYS: list = [
-        "AIzaSyD570QZ33pMSfy9wU0qVnNQRZxtSZEEKds",
-        "AIzaSyAvJokYSFsxvrd10nd58yxEc7oMM7KH54E",
-        "AIzaSyBrPObyLg2xlu-_N-bJnGTS3V58xygdJw0",
-        "AIzaSyDU8zf7N76Y1f4Dy3Y3iWYn9MO1d5yAcos"
-    ]
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+
     GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
     GEMINI_EMBEDDING_MODEL: str = os.getenv("GEMINI_EMBEDDING_MODEL", "gemini-embedding-001")
     GEMINI_TEMPERATURE: float = float(os.getenv("GEMINI_TEMPERATURE", "0.2"))
