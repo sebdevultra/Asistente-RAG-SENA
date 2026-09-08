@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistente RAG v2.0_opt — Academia Idiomas Colombia</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <h1>
+        <span>🇨🇴</span> Academia Idiomas Colombia
+        <span class="logo-badge">RAG v2.0_opt</span>
+      </h1>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+      <span class="model-tag">🦙 Ollama Local (Llama 3:8b - Scope Alto &ge; 0.40)</span>
+      <span class="model-tag">⚡ Gemini 3.6 Flash (Scope Medio)</span>
+      <span class="model-tag" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);">
+        🔍 Qdrant Vector DB
+      </span>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <!-- Chat Section -->
+    <section class="chat-section">
+      <div id="chat-messages" class="chat-messages">
+        <div class="message assistant-message">
+          ¡Hola! Soy <strong>Sofía</strong>, tu asesora virtual oficial de la <strong>Academia Idiomas Colombia</strong>.
+          Estoy aquí para resolver tus dudas sobre horarios, precios, modalidades, proceso de matrícula, certificaciones y pruebas de nivelación con base en nuestros documentos institucionales autorizados. ¿En qué te puedo orientar hoy?
+        </div>
+      </div>
+
+      <!-- Quick Query Chips -->
+      <div class="chips-container">
+        <button class="chip" data-query="¿Cuáles son los horarios de clase en la sede Medellín?">🕒 Horarios Medellín</button>
+        <button class="chip" data-query="¿Cuánto vale el nivel de inglés y qué descuentos ofrecen?">💰 Precios y Descuentos</button>
+        <button class="chip" data-query="¿Cómo funciona la prueba de clasificación Placement Test y cuánto cuesta?">📝 Placement Test</button>
+        <button class="chip" data-query="¿Cómo puedo congelar o aplazar mi semestre?">❄️ Congelamiento de Semestre</button>
+        <button class="chip" data-query="¿Me puedes dar una receta para preparar pizza?">🍕 Pregunta Fuera de Scope</button>
+      </div>
+
+      <!-- Input Area -->
+      <div class="chat-input-area">
+        <input 
+          type="text" 
+          id="chat-input" 
+          placeholder="Escribe tu consulta aquí (ej: ¿Cuáles son las modalidades disponibles?)..." 
+          autocomplete="off"
+        />
+        <button id="send-btn" class="btn-primary">Enviar</button>
+      </div>
+    </section>
+
+    <!-- Sidebar Dashboard -->
+    <aside class="sidebar">
+      <!-- Telemetría & FinOps -->
+      <div class="card">
+        <h2>📊 Métricas & Telemetría FinOps</h2>
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <div class="metric-label">Consultas Totales</div>
+            <div id="metric-total" class="metric-val">0</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Cache Hit Rate</div>
+            <div id="metric-cache" class="metric-val" style="color: #10b981;">0% (0)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Tasa Escalamiento</div>
+            <div id="metric-escalar" class="metric-val" style="color: #f59e0b;">0% (0)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Latencia Media</div>
+            <div id="metric-latency" class="metric-val">0 ms</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Costo Estimado</div>
+            <div id="metric-cost" class="metric-val" style="color: #06b6d4;">$0.00 USD</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">Uptime</div>
+            <div id="metric-uptime" class="metric-val">0s</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Control Administrativo -->
+      <div class="card admin-card">
+        <h2>⚙️ Gestión Documental</h2>
+        <p style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">
+          Ingestión e indexación vectorial de los 8 documentos de negocio en Qdrant.
+        </p>
+        <input type="password" id="admin-key-input" placeholder="X-Admin-Key" value="admin-super-secret-key-2026" />
+        <button id="reingest-btn" class="btn-secondary">🔄 Re-indexar 8 Documentos</button>
+      </div>
+
+      <!-- Arquitectura Card -->
+      <div class="card" style="font-size: 0.78rem; color: #94a3b8; line-height: 1.6;">
+        <h2 style="font-size: 0.9rem;">🛡️ Garantías de Calidad</h2>
+        <p>✔️ <strong>Cero Alucinaciones:</strong> Grounding estricto en los 8 documentos oficiales.</p>
+        <p>✔️ <strong>Sub-2ms Cache:</strong> SQLite con Write-Ahead Logging (WAL).</p>
+        <p>✔️ <strong>Búsqueda Vectorial:</strong> Qdrant (Similitud Coseno).</p>
+        <p>✔️ <strong>Escalamiento Automático:</strong> Umbral de confianza < 0.20.</p>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="/static/dist/bundle.js"></script>
+</body>
+</html>

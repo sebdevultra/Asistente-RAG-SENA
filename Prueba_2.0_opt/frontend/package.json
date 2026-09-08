@@ -1,0 +1,11 @@
+{
+  "name": "frontend-rag-opt",
+  "version": "2.0.0",
+  "description": "Frontend TypeScript para el Asistente Virtual RAG de Academia Idiomas Colombia",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
